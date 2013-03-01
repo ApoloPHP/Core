@@ -1,0 +1,20 @@
+{
+    "name": "Apolo PHP Core",
+    "description": "The base for all another components",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Michael Granados",
+            "email": "michaelgranados@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php" : ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": {"Apolo": "src/"}
+    },
+    "keywords": ["framework", "microframework", "lite", "MVC", "Routes"],
+    "license": "MIT"
+}
