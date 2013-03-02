@@ -1,4 +1,3 @@
 *.swp
-doc
-
+/build/
 /vendor/
