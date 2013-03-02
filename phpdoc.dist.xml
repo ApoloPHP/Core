@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpdoc>
+    <title>Apolo PHP Core</title>
+    <parser>
+        <target>build/doc</target>
+        <markers>
+            <item>TODO</item>
+            <item>FIXME</item>
+        </markers>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+    </parser>
+    <transformer>
+        <target>build/doc</target>
+        <transformation query="" writer="sourcecode" source="" artifact=""/>
+    </transformer>
+    <files>
+        <directory>src</directory>
+    </files>
+</phpdoc>
