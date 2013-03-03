@@ -1,10 +1,12 @@
 <?php
 
 namespace Apolo\Core;
+use DomainException;
 
 class Apolo
 {
-    function __construct()
+    public function __construct()
     {
+        throw new DomainException('You can\'t instanciate Apolo object');
     }
 }
