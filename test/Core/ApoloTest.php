@@ -12,4 +12,12 @@ class ApoloTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(class_exists('Apolo\\Core\\Apolo'));
     }
+
+    /**
+     * @expectedException DomainException
+     */
+    public function testCantInstanciate()
+    {
+        $apolo = new Apolo;
+    }
 }
