@@ -1,1 +1,14 @@
 *.php diff=php
+
+# ignore files for archive
+
+# git files
+.gitattributes  export-ignore
+.gitignore      export-ignore
+# test files
+test            export-ignore
+test/*          export-ignore
+# deploy files
+.travis.yml     export-ignore
+phpdoc.dist.xml export-ignore
+phpunit.xml     export-ignore
