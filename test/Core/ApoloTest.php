@@ -21,4 +21,12 @@ class ApoloTest extends PHPUnit_Framework_TestCase
     {
         $apolo = new Apolo;
     }
+
+    public function testSetAppDir()
+    {
+        $this->assertEquals(null, Apolo::appdir());
+        $dir = __DIR__;
+        Apolo::appdir($dir);
+        $this->assertEquals($dir, Apolo::appdir());
+    }
 }
