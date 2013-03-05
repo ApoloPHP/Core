@@ -117,6 +117,11 @@ final class Apolo
         throw new DomainException('You can\'t instanciate Apolo object');
     }
 
+    public static function sysdir()
+    {
+        return realpath(dirname(__FILE__) . '/..');
+    }
+
     /**
      * Sets and return the appdir
      *

@@ -30,6 +30,12 @@ class ApoloTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($dir, Apolo::appdir());
     }
 
+    public function testSysDir()
+    {
+        $dir = realpath(__DIR__ . '/../../src/Apolo/');
+        $this->assertEquals($dir, Apolo::sysdir());
+    }
+
     /**
      * @covers \Apolo\Core\Apolo::setRoutes
      */
