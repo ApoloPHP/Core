@@ -105,7 +105,7 @@ use DomainException;
  * @version   GIT: <git_id>
  * @link      http://github.com/ApoloPHP/Core
  */
-class Apolo
+final class Apolo
 {
     /**
      * Constructor, you can't use this method
