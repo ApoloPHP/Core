@@ -1,5 +1,21 @@
 <?php
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
 /**
+ * Apolo Framework
+ *
+ * It's a tiny framework that uses the Route/Method concept. All routes must 
+ * be defined in bootstrap file.
+ *
+ * <code>
+ * // bootstrap.php
+ * Apolo\Apolo::setRoutes(array(
+ *     '/'       => 'Controller\Welcome',
+ *     '/login'  => 'Controller\Login',
+ *     '/logout' => 'Controller\Logout',
+ * ));
+ * </code>
+ *
  * MIT License
  * ===========
  *
@@ -37,6 +53,58 @@
 namespace Apolo\Core;
 use DomainException;
 
+/**
+ * Apolo framework
+ * 
+ * Just a litle framework that runs over routes mapped to controllers.
+ *
+ * This framework works in three basic steps:
+ * - create routes
+ * - create controller
+ * - create a view
+ *
+ * The routes defines where all URLs in the project. Each URL need to be
+ * redirected to an Controller. It is defined using
+ * {@see Apolo\Apolo::setRoutes()}.
+ *
+ * The controller is a simple class. This class do not needs to extends any
+ * other to work. Any method accessed represents the method in the controller.
+ *
+ * To be easy, the method is mapped with the same name inside the controller.
+ * So if the user access a page via GET, Apolo will use the get method in the
+ * controller and if the user sends a request inside a form that uses POST,
+ * Apolo will use the post method of the controller.
+ *
+ * Here is a simple sample of a simple controller:
+ *
+ * <code>
+ * class Hello
+ * {
+ *     public function get()
+ *     {
+ *         return  '<form method="post">'
+ *               . ' <input type="text" name="name" />'
+ *               . ' <input type="submit" />'
+ *               . '</form>';
+ *     }
+ *     public function post()
+ *     {
+ *         $name = filter_input(
+ *             INPUT_POST, 'login', FILTER_SANITIZE_FULL_SPECIAL_CHARS
+ *         );
+ *         return 'Hello ' . $name;
+ *     }
+ * }
+ * </code>
+ *
+ * @category  Core
+ * @package   Apolo
+ * @author    Michael Castillo <michaelgranados@gmail.com>
+ * @copyright 2012 Michael Castillo
+ * @license   http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @version   GIT: <git_id>
+ * @link      http://github.com/ApoloPHP/Core
+ */
 class Apolo
 {
     /**
