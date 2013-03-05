@@ -68,6 +68,82 @@ class Apolo
         }
         return $_appdir;
     }
+
+    /**
+     * Set new routes
+     *
+     * Set routes for redirect the user to any controller. You need to pass
+     * the param of routes as array like this:
+     *
+     * <code>
+     * $routes = array(
+     *   'route' => 'Controller',
+     * );
+     * </code>
+     *
+     * All routes will be added to the actual routes and no one route setted
+     * before will be replaced.
+     *
+     * You can pass a route like a regexp to especify a set of routes, like
+     * this:
+     *
+     * <code>
+     * $routes = array(
+     *   'publish/\d+/?' => 'Publish',
+     * );
+     * </code>
+     *
+     * Here, you can use the replacer strings to use in your regexp, so the
+     * development will be more intuictive.
+     *
+     * <code>
+     * $routes = array(
+     *   'see/:digit:/:slug:/?' => 'See',
+     * );
+     * </code>
+     *
+     * In the aboe sample, <kbd>:digit:</kbd> will be replaced by a
+     * <kbd>[0-9]+</kbd> regexp. Here is the list of replacers:
+     *
+     * <pre>
+     * - /              => \/
+     * - :alpha:        => [a-zA-Z]+
+     * - :alphanumeric: => [a-zA-Z0-9]+
+     * - :digit:        => [0-9]+
+     * - :slug:         => [a-zA-Z0-9_-]+
+     * </pre>
+     *
+     * All elements in parentesis will be an argument to your controller like
+     * this:
+     *
+     * <code>
+     * $routes = array(
+     *     '/edit/(article|image)/(:digit:)' => 'Edit',
+     * //               arg1     ,  arg2
+     * );
+     * </code>
+     *
+     * So your controller will be something like this:
+     *
+     * <code>
+     * class Edit
+     * {
+     *     function get($area, $id)
+     *     {
+     *         // your development
+     *     }
+     * }
+     * </code>
+     *
+     * You can set 
+     *
+     * @param array  $routes Array of routes
+     * @param string $type   Type of insertion of routes
+     *
+     * @access public
+     * @static
+     * @return void
+     */
     public static function setRoutes(
         array $routes, $type = Route::MODE_REPLACE
     ) {
