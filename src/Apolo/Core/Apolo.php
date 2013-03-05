@@ -82,10 +82,10 @@ use DomainException;
  * {
  *     public function get()
  *     {
- *         return  '<form method="post">'
- *               . ' <input type="text" name="name" />'
- *               . ' <input type="submit" />'
- *               . '</form>';
+ *         return  '&lt;form method="post">'
+ *               . ' &lt;input type="text" name="name" />'
+ *               . ' &lt;input type="submit" />'
+ *               . '&lt;/form>';
  *     }
  *     public function post()
  *     {
