@@ -5,6 +5,11 @@ use DomainException;
 
 class Apolo
 {
+    /**
+     * Constructor, you can't use this method
+     *
+     * @return void
+     */
     public function __construct()
     {
         throw new DomainException('You can\'t instanciate Apolo object');
