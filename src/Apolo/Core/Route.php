@@ -49,10 +49,22 @@ use Apolo\Core\Request as Request;
  **/
 class Route
 {
+    /** Mode to append new map routes */
     const MODE_APPEND  = 'append';
+    /** Mode to prepend new map routes */
     const MODE_PREPEND = 'prepend';
+    /** Mode to replace all map routes */
     const MODE_REPLACE = 'replace';
 
+    /**
+     * conversors to map URIs
+     *
+     * You can use this conversor on any map to friendly your regexs
+     *
+     * @var string[] $conversors
+     * @static
+     * @protected
+     */
     protected static $conversors = array(
         '/'              => '\/',
         ':alpha:'        => '[a-zA-Z]+',
@@ -62,6 +74,30 @@ class Route
         ':ext:'          => '\.([a-zA-Z0-9~_-]{2,5})',
     );
 
+    /**
+     * Mapper for URIs in project
+     *
+     * This mapper associate any refexp URI to any controller. To create a new
+     * map, just use this syntax:
+     *
+     * <pre>
+     * Apolo\Core\Route::map(array(
+     *     'posts'                    => 'Controller\Post\All',
+     *     'posts/(\d+)'              => 'Controller\Post\One',
+     *     'posts/(:digit:)/comments' => 'Controller\Post\Comments',
+     * ));
+     * </pre>
+     *
+     * As you can see, you can use an expression over self::$conversors to
+     * make yours regexp more readable.
+     *
+     * @see \Apolo\Core\Route::$conversors Conversors mappers
+     *
+     * @param null|string[] $routes All your routes
+     * @param string        $mode   Mode to put new routes
+     *
+     * @return void|array
+     */
     public static function map($routes = null, $mode = self::MODE_APPEND)
     {
         static $_routes;

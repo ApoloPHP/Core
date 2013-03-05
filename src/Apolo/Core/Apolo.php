@@ -110,6 +110,8 @@ final class Apolo
     /**
      * Constructor, you can't use this method
      *
+     * @throws \DomainException if you try to instanciate
+     *
      * @return void
      */
     final public function __construct()
@@ -117,6 +119,13 @@ final class Apolo
         throw new DomainException('You can\'t instanciate Apolo object');
     }
 
+    /**
+     * The system directory
+     *
+     * @static
+     *
+     * @return string
+     */
     public static function sysdir()
     {
         return realpath(dirname(__FILE__) . '/..');
@@ -210,9 +219,10 @@ final class Apolo
      *
      * You can set 
      *
-     * @param array  $routes Array of routes
-     * @param string $type   Type of insertion of routes
+     * @param string[]  $routes Array of routes
+     * @param string    $type   Type of insertion of routes
      *
+     * @uses   \Apolo\Core\Route
      * @access public
      * @static
      * @return void
