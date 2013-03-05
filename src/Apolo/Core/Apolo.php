@@ -10,7 +10,7 @@ class Apolo
      *
      * @return void
      */
-    public function __construct()
+    final public function __construct()
     {
         throw new DomainException('You can\'t instanciate Apolo object');
     }
