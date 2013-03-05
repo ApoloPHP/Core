@@ -15,6 +15,7 @@ class ApoloTest extends PHPUnit_Framework_TestCase
 
     /**
      * @expectedException DomainException
+     * @expectedExceptionMessage You can't instanciate Apolo object
      */
     public function testCantInstanciate()
     {
