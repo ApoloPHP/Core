@@ -35,42 +35,58 @@
  */
 
 namespace Apolo\Core;
-use DomainException;
+use InvalidArgumentException;
+use Apolo\Core\Request as Request;
 
-class Apolo
+/**
+ * Route Object
+ * 
+ * @category   Core
+ * @package    Apolo
+ * @subpackage Core
+ * @author     Michael <michaelgranados@gmail.com>
+ * @link       http://github.com/dgmike/apolo
+ **/
+class Route
 {
-    /**
-     * Constructor, you can't use this method
-     *
-     * @return void
-     */
-    final public function __construct()
-    {
-        throw new DomainException('You can\'t instanciate Apolo object');
-    }
+    const MODE_APPEND  = 'append';
+    const MODE_PREPEND = 'prepend';
+    const MODE_REPLACE = 'replace';
 
-    /**
-     * Sets and return the appdir
-     *
-     * The parameter is option, if setted it sets the directory of application.
-     * In other hand, it returns the application dir.
-     *
-     * @param string $appdir (optional) Sets the application dir
-     *
-     * @return string
-     * @static
-     */
-    public static function appdir($appdir = null)
+    protected static $conversors = array(
+        '/'              => '\/',
+        ':alpha:'        => '[a-zA-Z]+',
+        ':alphanumeric:' => '[a-zA-Z0-9]+',
+        ':digit:'        => '[0-9]+',
+        ':slug:'         => '[a-zA-Z0-9_-]+',
+        ':ext:'          => '\.([a-zA-Z0-9~_-]{2,5})',
+    );
+
+    public static function map($routes = null, $mode = self::MODE_APPEND)
     {
-        static $_appdir;
-        if (null !== $appdir && is_string($appdir)) {
-            $_appdir = $appdir;
+        static $_routes;
+
+        if (!in_array(strtolower(gettype($routes)), array('array', 'null'))) {
+            throw new InvalidArgumentException();
         }
-        return $_appdir;
-    }
-    public static function setRoutes(
-        array $routes, $type = Route::MODE_REPLACE
-    ) {
-        Route::map($routes, $type);
+        if (!$_routes) {
+            $_routes = array();
+        }
+        if ($routes === null) {
+            return $_routes;
+        }
+        if ($mode === self::MODE_APPEND) {
+            foreach ($routes as $key => $value) {
+                $_routes[$key] = $value;
+            }
+        } elseif ($mode === self::MODE_PREPEND) {
+            $_routes = array_reverse($_routes);
+            foreach ($routes as $key => $value) {
+                $_routes[$key] = $value;
+            }
+            $_routes = array_reverse($_routes);
+        } else {
+            $_routes = $routes;
+        }
     }
 }
