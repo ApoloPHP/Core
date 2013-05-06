@@ -1,5 +1,5 @@
 {
-    "name": "Apolo PHP Core",
+    "name": "apolophp/core",
     "description": "The base for all another components",
     "type": "library",
     "authors": [
@@ -11,6 +11,9 @@
     "minimum-stability": "stable",
     "require": {
         "php" : ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": {"Apolo": "src/"}
