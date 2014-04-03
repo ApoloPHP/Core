@@ -1,5 +1,9 @@
 # Apolo Framework
 
+[![Build Status](https://travis-ci.org/ApoloPHP/Core.svg?branch=master)](https://travis-ci.org/ApoloPHP/Core)
+
+---
+
 This frameworks works with [PHP](http://php.net) 5.3.3+ so it uses
 the new features of PHP and maybe your server do not support, so be
 carrefull.
