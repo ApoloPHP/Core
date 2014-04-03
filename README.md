@@ -1,6 +1,7 @@
 # Apolo Framework
 
 [![Build Status](https://travis-ci.org/ApoloPHP/Core.svg?branch=master)](https://travis-ci.org/ApoloPHP/Core)
+[![Dependencies Status](https://depending.in/ApoloPHP/Core.png)](http://depending.in/ApoloPHP/Core)
 
 ---
 
