@@ -4,4 +4,4 @@ php:
 before_script:
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --dev
-script: ./vendor/phpunit/phpunit/phpunit.php .
+script: ./vendor/phpunit/phpunit/phpunit
