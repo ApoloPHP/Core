@@ -1,7 +1,11 @@
 # Apolo Framework
 
+[![Latest Stable Version](https://poser.pugx.org/apolophp/core/v/stable.png)](https://packagist.org/packages/apolophp/core)
+[![Latest Unstable Version](https://poser.pugx.org/apolophp/core/v/unstable.png)](https://packagist.org/packages/apolophp/core)
 [![Build Status](https://travis-ci.org/ApoloPHP/Core.svg?branch=master)](https://travis-ci.org/ApoloPHP/Core)
 [![Dependencies Status](https://depending.in/ApoloPHP/Core.png)](http://depending.in/ApoloPHP/Core)
+[![License](https://poser.pugx.org/apolophp/core/license.png)](https://packagist.org/packages/apolophp/core)
+[![Total Downloads](https://poser.pugx.org/apolophp/core/downloads.png)](https://packagist.org/packages/apolophp/core)
 
 ---
 
