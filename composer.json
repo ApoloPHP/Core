@@ -2,6 +2,10 @@
     "name": "apolophp/core",
     "description": "The base for all another components",
     "type": "library",
+    "support": {
+        "issues": "https://github.com/ApoloPHP/Core/issues?state=closed",
+        "source": "https://github.com/ApoloPHP/Core"
+    },
     "authors": [
         {
             "name": "Michael Granados",
@@ -16,7 +20,7 @@
         "phpunit/phpunit": "4.0.*"
     },
     "autoload": {
-        "psr-0": {"Apolo": "src/"}
+        "psr-4": {"Apolo\\Core\\": "src/"}
     },
     "keywords": ["framework", "microframework", "lite", "MVC", "Routes"],
     "license": "MIT"

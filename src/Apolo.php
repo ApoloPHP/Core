@@ -9,7 +9,7 @@
  *
  * <code>
  * // bootstrap.php
- * Apolo\Apolo::setRoutes(array(
+ * Apolo\Core\Apolo::setRoutes(array(
  *     '/'       => 'Controller\Welcome',
  *     '/login'  => 'Controller\Login',
  *     '/logout' => 'Controller\Logout',
