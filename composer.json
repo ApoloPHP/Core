@@ -20,7 +20,7 @@
         "phpunit/phpunit": "4.0.*"
     },
     "autoload": {
-        "psr-0": {"Apolo": "src/"}
+        "psr-4": {"Apolo\\Core\\": "src/"}
     },
     "keywords": ["framework", "microframework", "lite", "MVC", "Routes"],
     "license": "MIT"
