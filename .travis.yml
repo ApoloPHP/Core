@@ -11,4 +11,4 @@ install:
 script:
   - ./vendor/bin/phpunit
 after_script:
-  - tail +1 ./build/logs/*.txt
+    - tail -n +1 ./build/logs/*.txt
