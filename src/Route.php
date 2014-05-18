@@ -101,23 +101,7 @@ class Route
     public static function map($routes = null, $mode = self::MODE_APPEND)
     {
         static $_routes;
-
-        $validRoutes = in_array(
-            strtolower(gettype($routes)),
-            array('array', 'null')
-        );
-        $validMode = in_array(
-            $mode,
-            array(
-                self::MODE_APPEND,
-                self::MODE_PREPEND,
-                self::MODE_REPLACE
-            )
-        );
-
-        if (!$validMode || $validRoutes) {
-            throw new InvalidArgumentException();
-        }
+        self::validateMapArguments($routes, $mode);
         if (!$_routes) {
             $_routes = array();
         }
@@ -136,6 +120,31 @@ class Route
             $_routes = array_reverse($_routes);
         } else {
             $_routes = $routes;
+        }
+    }
+
+    /**
+     * Validates if data passed to map method is correct
+     *
+     * @throws InvalidArgumentException
+     *
+     * @param null|string[] $routes All your routes
+     * @param string        $mode   Mode to put new routes
+     * @return void
+     */
+    public static function validateMapArguments($routes, $mode)
+    {
+        $validRoutes = is_array($routes) || $routes === null;
+        $validMode = in_array(
+            $mode,
+            array(
+                self::MODE_APPEND,
+                self::MODE_PREPEND,
+                self::MODE_REPLACE
+            )
+        );
+        if (!$validRoutes || !$validMode) {
+            throw new InvalidArgumentException();
         }
     }
 }
