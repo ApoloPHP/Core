@@ -4,7 +4,7 @@
 /**
  * Apolo Framework
  *
- * It's a tiny framework that uses the Route/Method concept. All routes must 
+ * It's a tiny framework that uses the Route/Method concept. All routes must
  * be defined in bootstrap file.
  *
  * <code>
@@ -55,7 +55,7 @@ use DomainException;
 
 /**
  * Apolo framework
- * 
+ *
  * Just a litle framework that runs over routes mapped to controllers.
  *
  * This framework works in three basic steps:
@@ -217,10 +217,10 @@ final class Apolo
      * }
      * </code>
      *
-     * You can set 
+     * You can set
      *
      * @param string[]  $routes Array of routes
-     * @param string    $type   Type of insertion of routes
+     * @param string    $mode   Type of insertion of routes
      *
      * @uses   \Apolo\Core\Route
      * @access public
@@ -228,8 +228,8 @@ final class Apolo
      * @return void
      */
     public static function setRoutes(
-        array $routes, $type = Route::MODE_REPLACE
+        array $routes, $mode = Route::MODE_REPLACE
     ) {
-        Route::map($routes, $type);
+        Route::map($routes, $mode);
     }
 }

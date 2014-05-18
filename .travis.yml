@@ -3,7 +3,12 @@ php:
   - 5.3
   - 5.4
   - 5.5
-before_script:
+before_install:
+  - env
+install:
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --dev
-script: ./vendor/phpunit/phpunit/phpunit
+script:
+  - ./vendor/bin/phpunit
+after_script:
+    - tail -n +1 ./build/logs/*.txt
