@@ -4,6 +4,7 @@ php:
   - 5.4
   - 5.5
 before_script:
+  - env
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --dev
 script: ./vendor/phpunit/phpunit/phpunit --log-tap /dev/tty
