@@ -102,7 +102,20 @@ class Route
     {
         static $_routes;
 
-        if (!in_array(strtolower(gettype($routes)), array('array', 'null')) || !in_array($mode, array(self::MODE_APPEND, self::MODE_PREPEND, self::MODE_REPLACE))) {
+        $validRoutes = in_array(
+            strtolower(gettype($routes)),
+            array('array', 'null')
+        );
+        $validMode = in_array(
+            $mode,
+            array(
+                self::MODE_APPEND,
+                self::MODE_PREPEND,
+                self::MODE_REPLACE
+            )
+        );
+
+        if (!$validMode || $validRoutes) {
             throw new InvalidArgumentException();
         }
         if (!$_routes) {
