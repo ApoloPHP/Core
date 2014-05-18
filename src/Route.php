@@ -40,7 +40,7 @@ use Apolo\Core\Request as Request;
 
 /**
  * Route Object
- * 
+ *
  * @category   Core
  * @package    Apolo
  * @subpackage Core
@@ -102,7 +102,7 @@ class Route
     {
         static $_routes;
 
-        if (!in_array(strtolower(gettype($routes)), array('array', 'null'))) {
+        if (!in_array(strtolower(gettype($routes)), array('array', 'null')) || !in_array($mode, array(self::MODE_APPEND, self::MODE_PREPEND, self::MODE_REPLACE))) {
             throw new InvalidArgumentException();
         }
         if (!$_routes) {
