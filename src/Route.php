@@ -153,7 +153,7 @@ class Route
         $routes = array();
         foreach (self::map() as $map => $className) {
           $processedMap = $map;
-          foreach (self::$conversor as $token, $replace) {
+          foreach (self::$conversor as $token => $replace) {
               if (is_string($replace)) {
                   $processedMap = preg_replace($processedMap, $token, $replace);
               }
