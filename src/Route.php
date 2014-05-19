@@ -147,4 +147,19 @@ class Route
             throw new InvalidArgumentException();
         }
     }
+
+    public static function processedRoutes()
+    {
+        $routes = array();
+        foreach (self::map() as $map => $className) {
+          $processedMap = $map;
+          foreach (self::$conversor as $token, $replace) {
+              if (is_string($replace)) {
+                  $processedMap = preg_replace($processedMap, $token, $replace);
+              }
+          }
+          $routes[$processedMap] = $className;
+        }
+        return $routes;
+    }
 }
