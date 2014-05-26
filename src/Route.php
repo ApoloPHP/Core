@@ -148,6 +148,13 @@ class Route
         }
     }
 
+    /**
+     * Results in a list of routes converted to regex version of URLs
+     *
+     * @uses \Apolo\Core\Routes::convert2regex()
+     *
+     * @return array
+     */
     public static function processedRoutes()
     {
         $routes = array();
