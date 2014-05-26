@@ -59,4 +59,42 @@ class RouteTest extends PHPUnit_Framework_TestCase
     {
         Route::map(array('/' => 'Home'), 'bla');
     }
+
+    public function testProcessedRoutes()
+    {
+        Route::map(array(
+            '/'                  => 'Home',
+            '/article/(:digit:)' => 'Article',
+            '/post/(:slug:)'     => 'Post',
+        ), Route::MODE_REPLACE);
+        $expected = array(
+            '^\/$'                       => 'Home',
+            '^\/article\/([0-9]+)$'      => 'Article',
+            '^\/post\/([a-zA-Z0-9_-]+)$' => 'Post',
+        );
+        $this->assertEquals($expected, Route::processedRoutes());
+    }
+
+    public function testRegexReplaceEmptyString()
+    {
+        $this->assertEquals('^$', Route::convert2regex(''));
+    }
+
+    public function testRegexEscapeSlashes()
+    {
+        $this->assertEquals('^\/method\/action$', Route::convert2regex('/method/action'));
+    }
+
+    public function testRegexChangeSnippets()
+    {
+        $this->assertEquals('^action-[0-9]+$', Route::convert2regex('action-:digit:'));
+        $this->assertEquals('^process_[a-zA-Z]+$', Route::convert2regex('process_:alpha:'));
+        $this->assertEquals('^ticket-[a-zA-Z0-9]+$', Route::convert2regex('ticket-:alphanumeric:'));
+        $this->assertEquals('^article-[a-zA-Z0-9_-]+$', Route::convert2regex('article-:slug:'));
+    }
+
+    public function testRegexChangeMultipleSnippets()
+    {
+        $this->assertEquals('^\/article\/([a-zA-Z0-9_-]+)\/?$', Route::convert2regex('/article/(:slug:)/?'));
+    }
 }

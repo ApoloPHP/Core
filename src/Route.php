@@ -147,4 +147,40 @@ class Route
             throw new InvalidArgumentException();
         }
     }
+
+    /**
+     * Results in a list of routes converted to regex version of URLs
+     *
+     * @uses \Apolo\Core\Routes::convert2regex()
+     *
+     * @return array
+     */
+    public static function processedRoutes()
+    {
+        $routes = array();
+        foreach (self::map() as $map => $className) {
+          $processedMap = self::convert2regex($map);
+          $routes[$processedMap] = $className;
+        }
+        return $routes;
+    }
+
+    /**
+     * Converts basic route string to regex mode
+     *
+     * @see \Apolo\Core\Route::$conversors Conversors mappers
+     *
+     * @param string $route the basic route string
+     *
+     * @return string
+     */
+    public static function convert2regex($route)
+    {
+      foreach (self::$conversors as $token => $replace) {
+          if (is_string($replace)) {
+              $route = str_replace($token, $replace, $route);
+          }
+      }
+      return "^$route\$";
+    }
 }
