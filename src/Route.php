@@ -152,14 +152,28 @@ class Route
     {
         $routes = array();
         foreach (self::map() as $map => $className) {
-          $processedMap = $map;
-          foreach (self::$conversor as $token => $replace) {
-              if (is_string($replace)) {
-                  $processedMap = preg_replace($processedMap, $token, $replace);
-              }
-          }
+          $processedMap = self::convert2regex($map);
           $routes[$processedMap] = $className;
         }
         return $routes;
+    }
+
+    /**
+     * Converts basic route string to regex mode
+     *
+     * @see \Apolo\Core\Route::$conversors Conversors mappers
+     *
+     * @param string $route the basic route string
+     *
+     * @return string
+     */
+    public static function convert2regex($route)
+    {
+      foreach (self::$conversors as $token => $replace) {
+          if (is_string($replace)) {
+              $route = str_replace($token, $replace, $route);
+          }
+      }
+      return "^$route\$";
     }
 }
