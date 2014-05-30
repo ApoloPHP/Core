@@ -232,4 +232,24 @@ final class Apolo
     ) {
         Route::map($routes, $mode);
     }
+
+    /**
+     * Discovers className to process route
+     *
+     * @param string $uri Url to convert to controller ClassName
+     *
+     * @uses   \Apolo\Core\Route
+     * @access public
+     * @static
+     * @return string
+     */
+    public static function discover($uri)
+    {
+        $routes = Route::processedRoutes();
+        foreach ($routes as $regex => $className) {
+            if (preg_match("/$regex/", $uri)) {
+                return $className;
+            }
+        }
+    }
 }

@@ -46,4 +46,28 @@ class ApoloTest extends PHPUnit_Framework_TestCase
         $this->assertNull(Apolo::setRoutes($routes));
         $this->assertEquals($routes, Route::map());
     }
+
+    public function testDiscoverMethod()
+    {
+        Apolo::setRoutes(array(
+            '/post/?'                        => 'PostList',
+            '/post/:slug:/?'                 => 'PostView',
+            '/post/:slug:/comment/?'         => 'PostCommentList',
+            '/post/:slug:/comment/:digit:/?' => 'PostCommentActions',
+            '/post/:slug:/related/?'         => 'PostRelatedList',
+            '/post/:slug:/related/:slug:/?'  => 'PostRelatedList',
+        ), Route::MODE_REPLACE);
+        $data = array(
+            // passed, expected
+            '/post/any-post',         'PostView',
+            '/post/my-post/comment',  'PostCommentList',
+            '/post/related/',         'PostView',
+            '/post/related/related/', 'PostRelatedList',
+            '/article',               false,
+        );
+        $data = array_chunk($data, 2);
+        foreach ($data as $item) {
+            $this->assertEquals($item[1], Apolo::discover($item[0]));
+        }
+    }
 }
