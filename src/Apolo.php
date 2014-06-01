@@ -252,4 +252,17 @@ final class Apolo
             }
         }
     }
+
+    /**
+     * Process and return method to be used in controller
+     *
+     * @param array $request Pass the $_REQUEST array as dependency
+     *
+     * @static
+     * @public
+     * @return string
+     */
+    public static function method(array $request = array())
+    {
+    }
 }
