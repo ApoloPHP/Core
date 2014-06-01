@@ -264,5 +264,15 @@ final class Apolo
      */
     public static function method(array $request = array())
     {
+        if (!array_key_exists('REQUEST_METHOD', $request)) {
+            return 'get';
+        }
+        if (strtoupper($request['REQUEST_METHOD']) === 'POST') {
+            if (array_key_exists('_method', $_POST) && is_string($_POST['_method'])) {
+                return strtolower($_POST['_method']);
+            }
+            return 'post';
+        }
+        return strtolower($request['REQUEST_METHOD']);
     }
 }
