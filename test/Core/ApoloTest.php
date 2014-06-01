@@ -70,4 +70,14 @@ class ApoloTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($item[1], Apolo::discover($item[0]));
         }
     }
+
+    public function testMethod()
+    {
+        $this->assertEquals('get', Apolo::method());
+        $this->assertEquals('get', Apolo::method(array('REQUEST_METHOD' => 'GET')));
+        $this->assertEquals('post', Apolo::method(array('REQUEST_METHOD' => 'POST')));
+        $this->assertEquals('put', Apolo::method(array('REQUEST_METHOD' => 'PUT')));
+        $_POST = array('_method' => 'PATH');
+        $this->assertEquals('path', Apolo::method(array('REQUEST_METHOD' => 'POST')));
+    }
 }
