@@ -80,13 +80,13 @@ class Route
      * This mapper associate any refexp URI to any controller. To create a new
      * map, just use this syntax:
      *
-     * <pre>
+     * ```php
      * Apolo\Core\Route::map(array(
      *     'posts'                    => 'Controller\Post\All',
      *     'posts/(\d+)'              => 'Controller\Post\One',
      *     'posts/(:digit:)/comments' => 'Controller\Post\Comments',
      * ));
-     * </pre>
+     * ```
      *
      * As you can see, you can use an expression over self::$conversors to
      * make yours regexp more readable.
