@@ -25,8 +25,6 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @category   Core
- * @package    Apolo
- * @subpackage Core
  * @author     Michael <michaelgranados@gmail.com>
  * @copyright  2012 Michael.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
@@ -42,8 +40,6 @@ use Apolo\Core\Request as Request;
  * Route Object
  *
  * @category   Core
- * @package    Apolo
- * @subpackage Core
  * @author     Michael <michaelgranados@gmail.com>
  * @link       http://github.com/dgmike/apolo
  **/
@@ -62,6 +58,7 @@ class Route
      * You can use this conversor on any map to friendly your regexs
      *
      * @var string[] $conversors
+     *
      * @static
      * @protected
      */
@@ -91,11 +88,12 @@ class Route
      * As you can see, you can use an expression over self::$conversors to
      * make yours regexp more readable.
      *
-     * @see \Apolo\Core\Route::$conversors Conversors mappers
-     *
      * @param null|string[] $routes All your routes
      * @param string        $mode   Mode to put new routes
      *
+     * @see \Apolo\Core\Route::$conversors Conversors mappers
+     * @public
+     * @static
      * @return void|array
      */
     public static function map($routes = null, $mode = self::MODE_APPEND)
@@ -126,10 +124,12 @@ class Route
     /**
      * Validates if data passed to map method is correct
      *
-     * @throws InvalidArgumentException
-     *
      * @param null|string[] $routes All your routes
      * @param string        $mode   Mode to put new routes
+     *
+     * @public
+     * @static
+     * @throws \InvalidArgumentException
      * @return void
      */
     public static function validateMapArguments($routes, $mode)
@@ -167,11 +167,16 @@ class Route
 
     /**
      * Converts basic route string to regex mode
+     * 
+     * All string is parsed to a right regex to make the use of Apolo
+     * very easy
      *
      * @see \Apolo\Core\Route::$conversors Conversors mappers
      *
-     * @param string $route the basic route string
+     * @param string $route The basic route string
      *
+     * @public
+     * @static
      * @return string
      */
     public static function convert2regex($route)

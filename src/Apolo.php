@@ -41,8 +41,6 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @category   Core
- * @package    Apolo
- * @subpackage Core
  * @author     Michael <michaelgranados@gmail.com>
  * @copyright  2012 Michael.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
@@ -149,7 +147,7 @@ final class Apolo
      * $controller_file = Apolo::appdir() . 'Controller\PostController.php';
      * ```
      *
-     * @param string $appdir (optional) Sets the application dir
+     * @param null|string $appdir Sets the application dir
      *
      * @public
      * @static
@@ -233,7 +231,7 @@ final class Apolo
      * @param string[]  $routes Array of routes
      * @param string    $mode   Type of insertion of routes
      *
-     * @uses   \Apolo\Core\Route
+     * @uses \Apolo\Core\Route
      * @public
      * @static
      * @return void
@@ -260,7 +258,7 @@ final class Apolo
      *
      * @param string $uri Url to convert to controller ClassName
      *
-     * @uses   \Apolo\Core\Route
+     * @uses \Apolo\Core\Route
      * @internal
      * @public
      * @static
